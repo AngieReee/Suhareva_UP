@@ -1,0 +1,56 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Suhareva_UP.MenuPage"
+			 xmlns:vm="using:Suhareva_UP.ViewModels"
+			 x:DataType="vm:MenuPageViewModel">
+
+	<ScrollViewer>
+		<StackPanel>
+			<TextBlock Classes="TitleTB">Список партнёров</TextBlock>
+			<StackPanel>
+				<Button Command="{Binding ToChangePage}" Classes="AddButton">Добавить</Button>
+			</StackPanel>
+			<StackPanel>
+				<ListBox ItemsSource="{Binding Partners}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<Border Classes="listItemB">
+								<Grid>
+									<Grid.RowDefinitions>
+										<RowDefinition></RowDefinition>
+										<RowDefinition></RowDefinition>
+										<RowDefinition></RowDefinition>
+										<RowDefinition></RowDefinition>
+										<RowDefinition></RowDefinition>
+										<RowDefinition></RowDefinition>
+									</Grid.RowDefinitions>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="40"></ColumnDefinition>
+										<ColumnDefinition Width="20"></ColumnDefinition>
+										<ColumnDefinition></ColumnDefinition>
+										<ColumnDefinition></ColumnDefinition>
+									</Grid.ColumnDefinitions>
+
+									<TextBlock Grid.Row="0" Grid.Column="0" Classes="listitemTB" Text="{Binding Partnerstype.Title}"></TextBlock>
+									<TextBlock Grid.Row="0" Grid.Column="1" Classes="listitemTB" Text=" | "></TextBlock>
+									<TextBlock Grid.Row="0" Grid.Column="2" Classes="listitemTB" Text="{Binding Title}"></TextBlock>
+									<TextBlock Grid.Row="0" Grid.Column="3" Classes="listitemTB2" Text="{Binding Discount}"></TextBlock>
+									<TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Classes="listitemTB3" Text="{Binding Head, StringFormat= Директор: {0}}"></TextBlock>
+									<TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Classes="listitemTB3" Text="{Binding Phonenumber, StringFormat= Телефон: {0}}"></TextBlock>
+									<TextBlock Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Classes="listitemTB3" Text="{Binding Rating, StringFormat= Рейтинг: {0}}"></TextBlock>
+									<Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding $parent[UserControl].((vm:MenuPageViewModel)DataContext).ToChangePageEdit}" CommandParameter="{Binding Partnersid}" Classes="NewButton">Редактировать</Button>
+									<Button Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding $parent[UserControl].((vm:MenuPageViewModel)DataContext).ToHistoryPage}" CommandParameter="{Binding Partnersid}" Classes="NewButton">История реализации продукции</Button>
+								</Grid>
+
+							</Border>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</StackPanel>
+		</StackPanel>
+	</ScrollViewer>
+
+</UserControl>

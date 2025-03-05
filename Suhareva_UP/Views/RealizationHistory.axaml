@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Suhareva_UP.RealizationHistory"
+			 xmlns:vm="using:Suhareva_UP.ViewModels"
+			 x:DataType="vm:RealizationHistoryViewModel">
+	
+	<ScrollViewer>
+		<StackPanel>
+			<TextBlock Classes="TitleTB">Истории реализации продукции</TextBlock>
+			<StackPanel>
+				<Button Command="{Binding BackButton}" Classes="AddButton">Назад</Button>
+			</StackPanel>
+			<StackPanel>
+				<ListBox ItemsSource="{Binding PartnerAndProducts}">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<Border Classes="listItemB">
+								<StackPanel>
+									<TextBlock Classes="listitemTB2" Text="{Binding Products.Title, StringFormat= Продукция: {0}}"></TextBlock>
+									<TextBlock Classes="listitemTB2" Text="{Binding Numberofproducts, StringFormat= Количество продукции: {0}}"></TextBlock>
+									<TextBlock Classes="listitemTB2" Text="{Binding Saledate, StringFormat= Дата: {0}}"></TextBlock>
+								</StackPanel>
+							</Border>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
+			</StackPanel>
+		</StackPanel>
+	</ScrollViewer>
+</UserControl>

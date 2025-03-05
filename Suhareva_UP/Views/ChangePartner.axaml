@@ -1,0 +1,67 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Suhareva_UP.ChangePartner"
+			 xmlns:vm="using:Suhareva_UP.ViewModels"
+			 x:DataType="vm:ChangePartnerViewModel">
+	<ScrollViewer>
+		<StackPanel Classes="mainSP">
+			<TextBlock Classes="TitleTB">Добавление/Редактирование</TextBlock>
+			<StackPanel>
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+						<RowDefinition></RowDefinition>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="150"></ColumnDefinition>
+						<ColumnDefinition></ColumnDefinition>
+					</Grid.ColumnDefinitions>
+					<Button Grid.Row="0" Grid.Column="1" Classes="BackButton" Command="{Binding BackButton}">Назад</Button>
+					
+					<TextBlock Grid.Row="1" Grid.Column="0" Classes="inputNameTB">Наименование: </TextBlock>
+					<TextBox Grid.Row="1" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Title}"></TextBox>
+
+					<TextBlock Grid.Row="2" Grid.Column="0" Classes="inputNameTB">Тип партнёра: </TextBlock>
+					<ComboBox Grid.Row="2" Grid.Column="1" Classes="partnerCBInput" ItemsSource="{Binding ptList}" SelectedItem="{Binding CurPartner.Partnerstype}">
+						<ComboBox.ItemTemplate>
+							<DataTemplate>
+								<TextBlock Text="{Binding Title}"></TextBlock>
+							</DataTemplate>
+						</ComboBox.ItemTemplate>
+					</ComboBox>
+
+					<TextBlock Grid.Row="3" Grid.Column="0" Classes="inputNameTB">Адрес: </TextBlock>
+					<TextBox Grid.Row="3" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Legaladdress}"></TextBox>
+
+					<TextBlock Grid.Row="4" Grid.Column="0" Classes="inputNameTB">ИНН: </TextBlock>
+					<TextBox Grid.Row="4" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Inn}"></TextBox>
+
+					<TextBlock Grid.Row="5" Grid.Column="0" Classes="inputNameTB">Директор: </TextBlock>
+					<TextBox Grid.Row="5" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Head}"></TextBox>
+
+					<TextBlock Grid.Row="6" Grid.Column="0" Classes="inputNameTB">Номер телефона: </TextBlock>
+					<TextBox Grid.Row="6" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Phonenumber}"></TextBox>
+
+					<TextBlock Grid.Row="7" Grid.Column="0" Classes="inputNameTB">Почта: </TextBlock>
+					<TextBox Grid.Row="7" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Email}"></TextBox>
+
+					<TextBlock Grid.Row="8" Grid.Column="0" Classes="inputNameTB">Рейтинг: </TextBlock>
+					<TextBox Grid.Row="8" Grid.Column="1" Classes="partnerInput" Text="{Binding CurPartner.Rating}"></TextBox>
+				</Grid>
+			</StackPanel>
+
+			<Button Command="{Binding SaveChanges}" Classes="SaveButton">Сохранить</Button>
+		</StackPanel>
+	</ScrollViewer>
+
+</UserControl>

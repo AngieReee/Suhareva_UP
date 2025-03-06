@@ -1,3 +1,3 @@
 # Suhareva_UP
 
-<p align="center"><img  src="./images/Мастер пол.png" width="40%"></p> <h1 align="center">Мастер пол</h1>
+<h1 align="center"><p align="center"><img  src="./images/Мастер пол.png" width="20%"></p> Мастер пол</h1>

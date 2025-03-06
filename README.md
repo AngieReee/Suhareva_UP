@@ -18,6 +18,6 @@
 3. Перейти в Visual Studio 2022 и склонировать проект с помощью ссылки;
 4. Выбрать в качестве автозапускаемого элемента "Suhareva_UP";
 
-<p align="center"><img  src="./images/instruction.jpg" width="20%"></p>
+<p align="center"><img  src="./images/instruction.jpg" width="40%"></p>
 
 5. Запустить проект.

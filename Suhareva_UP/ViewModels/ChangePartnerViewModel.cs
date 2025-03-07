@@ -10,6 +10,7 @@ namespace Suhareva_UP.ViewModels
 {
 	public class ChangePartnerViewModel : ReactiveObject
 	{
+        public string message;
         public List<Partnerstype> ptList => MainWindowViewModel.connection.Partnerstypes.ToList();
 
         Partner? curPartner;
@@ -32,21 +33,37 @@ namespace Suhareva_UP.ViewModels
 
         public async void SaveChanges()
         {
-            ButtonResult buttonResult;
-            buttonResult = await MessageBoxManager.GetMessageBoxStandard("Сохранение", "Вы хотите сохранить изменения?", ButtonEnum.YesNo).ShowAsync();
-            switch (buttonResult)
+            if (CurPartner.Inn.Length>10)
             {
-                case ButtonResult.Yes:
-                    if (CurPartner.Partnersid == 0)
-                    {
-                        MainWindowViewModel.connection.Add(CurPartner);
-                    }
-                    MainWindowViewModel.connection.SaveChanges();
-                    MainWindowViewModel.Instance.Uc = new MenuPage();
-                    break;
-                case ButtonResult.No:
-                    break;
-            }   
+                message = "ИНН не может быть длиннее 10";
+            }
+            else if (CurPartner.Rating > 10)
+            {
+                message = "Рейтинг не может быть больше 10";
+            }
+            else if (CurPartner.Rating < 0)
+            {
+                message = "Рейтинг не может быть меньше 0";
+            }
+            else
+            {
+                ButtonResult buttonResult;
+                buttonResult = await MessageBoxManager.GetMessageBoxStandard("Сохранение", "Вы хотите сохранить изменения?", ButtonEnum.YesNo).ShowAsync();
+                switch (buttonResult)
+                {
+                    case ButtonResult.Yes:
+                        if (CurPartner.Partnersid == 0)
+                        {
+                            MainWindowViewModel.connection.Add(CurPartner);
+                        }
+                        MainWindowViewModel.connection.SaveChanges();
+                        MainWindowViewModel.Instance.Uc = new MenuPage();
+                        break;
+                    case ButtonResult.No:
+                        break;
+                }
+            }
+            
         }
        
     }
